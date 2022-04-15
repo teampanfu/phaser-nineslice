@@ -39,7 +39,7 @@ new Phaser.Game(config);
 
 ## Getting the plugin: `npm` and `yarn`
 
-![npm](https://img.shields.io/npm/dt/@teampanfu/phaser-nineslice?style=flat-square)
+[![npm](https://img.shields.io/npm/dt/@teampanfu/phaser-nineslice?style=flat-square)](https://www.npmjs.com/package/@teampanfu/phaser-nineslice)
 
 The plugin is published on npm under `@teampanfu/phaser-nineslice` and can be installed as follows:
 
