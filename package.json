@@ -1,6 +1,6 @@
 {
   "name": "@teampanfu/phaser-nineslice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A NineSlice plugin for Phaser 3",
   "keywords": [
     "nineslice",
