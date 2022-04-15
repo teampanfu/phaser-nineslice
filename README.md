@@ -17,7 +17,7 @@ The key idea is to prevent image scaling distortion by protecting the pixels def
 Paste this into the `<head>` area of your HTML layout:
 
 ```html
-<script src="//cdn.jsdelivr.net/npm/@teampanfu/phaser-nineslice@1.0.0/dist/nineslice.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/@teampanfu/phaser-nineslice@latest/dist/nineslice.min.js"></script>
 ```
 
 Once you have pasted the script, you have access to the global `NineSlice` variable.
