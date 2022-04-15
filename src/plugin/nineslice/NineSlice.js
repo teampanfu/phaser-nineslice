@@ -14,7 +14,7 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
     constructor(scene, sliceConfig, positionConfig) {
         const { x, y, width, height } = positionConfig
 
-        super(scene, x, y, width, height)
+        super(scene, x, y, width || 32, height || 32)
 
         this.sliceConfig = buildSliceConfig(sliceConfig)
 
@@ -24,7 +24,7 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
             throw new Error('NineSlice requires a texture key to be specified.')
         }
 
-        this.sourceTexture = scene.sys.textures.get(this.sliceConfig.sourceKey)
+        this.sourceTexture = scene.sys.textures.get(sourceKey)
 
         if (!this.sourceTexture || this.sourceTexture.key === MISSING) {
             throw new Error(`Specified texture key '${sourceKey}' not found.`)
@@ -205,11 +205,8 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
         const minWidth = safeOffsets.left + safeOffsets.right
         const minHeight = safeOffsets.top + safeOffsets.bottom
 
-        console.log(minWidth, minHeight)
-        console.log(width, height)
-
         if (width < minWidth || height < minHeight) {
-            console.error(`Attempted to set NineSlice size less than minimum (${minWidth}x${minHeight}).`)
+            console.error(`Attempted to set the NineSlice size below the minimum. (${minWidth}x${minHeight})`)
             return
         }
 
@@ -229,7 +226,6 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
         }
 
         const { top, right, bottom, left } = this.sliceConfig.safeOffsets
-        console.log(top, right, bottom, left)
         const newX = this.x + left
         const newY = this.y + top
         const newWidth = this.width - (left + right)
