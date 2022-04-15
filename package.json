@@ -1,0 +1,36 @@
+{
+  "name": "@teampanfu/phaser-nineslice",
+  "version": "1.0.0",
+  "description": "A NineSlice plugin for Phaser 3",
+  "keywords": [
+    "nineslice",
+    "phaser",
+    "plugin"
+  ],
+  "homepage": "https://github.com/teampanfu/phaser-nineslice#readme",
+  "bugs": {
+    "url": "https://github.com/teampanfu/phaser-nineslice/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teampanfu/phaser-nineslice.git"
+  },
+  "license": "MIT",
+  "author": "Robin <robin@panfu.us>",
+  "main": "./dist/nineslice.min.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve"
+  },
+  "dependencies": {
+    "phaser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.4",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  }
+}
