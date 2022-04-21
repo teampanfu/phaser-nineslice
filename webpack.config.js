@@ -8,8 +8,8 @@ module.exports = {
     filename: "nineslice.min.js",
     library: {
       name: "NineSlice",
-      type: "umd",
-    },
+      type: "umd"
+    }
   },
   module: {
     rules: [
@@ -30,12 +30,12 @@ module.exports = {
       commonjs: "phaser",
       commonjs2: "phaser",
       amd: "phaser",
-      root: "Phaser",
-    },
+      root: "Phaser"
+    }
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "example"),
-    },
-  },
+      directory: path.join(__dirname, "example")
+    }
+  }
 };
