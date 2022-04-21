@@ -1,4 +1,4 @@
-import NineSlice from './nineslice/NineSlice'
+import NineSlice from '../nineslice/NineSlice'
 
 const processOffsetArray = (array) => {
     switch (array.length) {
@@ -31,7 +31,7 @@ export default function NineSliceCreator(scene, args) {
     const [x, y, width, height, textureConfig, offsetConfig] = args
 
     const sliceConfig = {}
-    const position = { x, y, width, height }
+    const positionConfig = { x, y, width, height }
 
     // Extract the key and optionally the frame from the texture source
     if (typeof textureConfig === 'string') {
@@ -77,5 +77,5 @@ export default function NineSliceCreator(scene, args) {
         }
     }
 
-    return new NineSlice(scene, sliceConfig, position)
+    return new NineSlice(scene, sliceConfig, positionConfig)
 }

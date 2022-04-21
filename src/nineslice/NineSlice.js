@@ -52,8 +52,8 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
 
         if (this._debugGraphic) {
             this._debugGraphic.clear()
-            this.drawFrames()
             this.updateSafeBounds()
+            this.drawFrames()
         }
     }
 
@@ -66,8 +66,8 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
 
         if (this._debugGraphic) {
             this._debugGraphic.clear()
-            this.drawFrames()
             this.updateSafeBounds()
+            this.drawFrames()
         }
     }
 
@@ -86,7 +86,10 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
         const draw = (currentFrame, x, y, width, height) => {
             if (width > 0 && height > 0) {
                 if (this._debugGraphic) {
-                    this._debugGraphic.strokeRect(this.x + x, this.y + y, width, height)
+                    const debugX = this.x + x + (this.parentContainer?.x || 0)
+                    const debugY = this.y + y + (this.parentContainer?.y || 0)
+
+                    this._debugGraphic.strokeRect(debugX, debugY, width, height)
                 }
 
                 const frameImage = this.scene.make.image({
@@ -123,8 +126,8 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
 
         draw(frame.topLeft, 0, 0, layout.topLeft.x, layout.topLeft.y)
         draw(frame.topRight, this.width - layout.topRight.x, 0, layout.topRight.x, layout.topRight.y)
-        draw(frame.bottomRight, this.width - layout.bottomRight.x, this.height - layout.bottomRight.y, layout.bottomRight.x, layout.bottomRight.y)
         draw(frame.bottomLeft, 0, this.height - layout.bottomLeft.y, layout.bottomLeft.x, layout.bottomLeft.y)
+        draw(frame.bottomRight, this.width - layout.bottomRight.x, this.height - layout.bottomRight.y, layout.bottomRight.x, layout.bottomRight.y)
     }
 
     enableDebugDraw(enabled = true) {
@@ -135,7 +138,7 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
         if (enabled) {
             this._debugGraphic = this.scene.add.graphics(this.x, this.y)
         } else {
-            this._debugGraphic.destroy()
+            this._debugGraphic.destroy(true)
             this._debugGraphic = null
         }
 
@@ -234,7 +237,10 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
         const { x, y, width, height } = this._safeBounds
 
         if (newX !== x || newY !== y || newWidth !== width || newHeight !== height) {
-            this._safeBounds.setTo(newX, newY, newWidth, newHeight)
+            const debugX = newX + (this.parentContainer?.x || 0)
+            const debugY = newY + (this.parentContainer?.y || 0)
+
+            this._safeBounds.setTo(debugX, debugY, newWidth, newHeight)
         }
 
         this._debugGraphic.lineStyle(1, 0x00ff00)
