@@ -1,6 +1,6 @@
 # NineSlice Plugin for Phaser 3
 
-This plugin adds a new game object to Phaser that allows you to resize your images and sprites without distorting them.
+This plugin adds a new game object to Phaser that allows you to resize an image or sprite/atlas without distorting it.
 
 ## What is 9-slice scaling?
 
@@ -8,34 +8,7 @@ This plugin adds a new game object to Phaser that allows you to resize your imag
 
 The key idea is to prevent image scaling distortion by protecting the pixels defined in 4 parts (corners) of the image and scaling or repeating the pixels in the other 5 parts.
 
-(Source: [Wikipedia](https://en.wikipedia.org/wiki/9-slice_scaling))
-
-## Getting the plugin: Directly including it.
-
-[![](https://data.jsdelivr.com/v1/package/npm/@teampanfu/phaser-nineslice/badge)](https://www.jsdelivr.com/package/npm/@teampanfu/phaser-nineslice)
-
-Paste this into the `<head>` area of your HTML layout:
-
-```html
-<script src="//cdn.jsdelivr.net/npm/@teampanfu/phaser-nineslice@latest/dist/nineslice.min.js"></script>
-```
-
-Once you have pasted the script, you have access to the global `NineSlice` variable.
-
-This will allow you to include the plugin as follows:
-
-```js
-const config = {
-    ...
-    plugins: {
-        global: [
-            { key: 'NineSlicePlugin', plugin: NineSlice.Plugin, start: true }
-        ]
-    }
-};
-
-new Phaser.Game(config);
-```
+Source: [Wikipedia](https://en.wikipedia.org/wiki/9-slice_scaling)
 
 ## Getting the plugin: `npm` and `yarn`
 
@@ -69,9 +42,36 @@ const config = {
 new Phaser.Game(config)
 ```
 
+## Getting the plugin: Directly including it.
+
+[![](https://data.jsdelivr.com/v1/package/npm/@teampanfu/phaser-nineslice/badge)](https://www.jsdelivr.com/package/npm/@teampanfu/phaser-nineslice)
+
+Paste this into the `<head>` area of your HTML layout:
+
+```html
+<script src="//cdn.jsdelivr.net/npm/@teampanfu/phaser-nineslice@latest/dist/nineslice.min.js"></script>
+```
+
+Once you have pasted the script, you have access to the global `NineSlice` variable.
+
+This will allow you to include the plugin as follows:
+
+```js
+const config = {
+    ...
+    plugins: {
+        global: [
+            { key: 'NineSlicePlugin', plugin: NineSlice.Plugin, start: true }
+        ]
+    }
+};
+
+new Phaser.Game(config);
+```
+
 ## Usage
 
-Once you have added the plugin to your game, you can now use the NineSlice game object in the scene as follows:
+You can use the NineSlice game object in any scene as follows:
 
 ```js
 class Example extends Phaser.Scene {
@@ -111,12 +111,12 @@ The sixth argument is the offset of the corners. It can be either a number, whic
 
 When an array is used, it can consist of 1 to 4 elements and the values are assigned in the same way as when defining border offsets in CSS.
 
-Array Length  | Use  | Explanation  |
-------------  | ---- | ------------ |
-1 | `[0]` | The first (only) element is used as the value for all corners.
-2 | `[0, 10]` | The first element is used for top and bottom, the second is used for left and right.
-3 | `[0, 10, 5]` | The first element is used for top, the second for right and left, and the third for bottom.
-4 | `[0, 10, 5, 20]` | The first element is used for top, the second for right, the third for bottom and the fourth for left.
+Array Length  | Use              | Explanation                                                                                            |
+------------  | ---------------- | ------------------------------------------------------------------------------------------------------ |
+1             | `[0]`            | The first (only) element is used as the value for all corners.                                         |
+2             | `[0, 10]`        | The first element is used for top and bottom, the second is used for left and right.                   |
+3             | `[0, 10, 5]`     | The first element is used for top, the second for right and left, and the third for bottom.            |
+4             | `[0, 10, 5, 20]` | The first element is used for top, the second for right, the third for bottom and the fourth for left. |
 
 ## Methods
 
@@ -128,8 +128,6 @@ If you want to change the size of the game object, use the `resize` method on yo
 const sliced = this.add.nineslice(...);
 sliced.resize(width, height);
 ```
-
-
 
 ### Enable debug drawing
 
