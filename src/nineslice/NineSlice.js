@@ -159,7 +159,7 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
             if (!texture.has(name)) {
                 this.frameCache[frame] = texture.add(name, 0, textureX + x, textureY + y, width, height)
             } else {
-                this.frameCache[frame] = texture.frames[frame]
+                this.frameCache[frame] = texture.frames[name]
             }
         }
 
