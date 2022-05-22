@@ -14,7 +14,11 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
     constructor(scene, sliceConfig, positionConfig) {
         const { x, y, width, height } = positionConfig
 
-        super(scene, x, y, width || 32, height || 32)
+        if (!width || !height) {
+            throw new Error('The size must be greater than 0.')
+        }
+
+        super(scene, x, y, width, height)
 
         this.sliceConfig = buildSliceConfig(sliceConfig)
 
