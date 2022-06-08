@@ -14,11 +14,7 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
     constructor(scene, sliceConfig, positionConfig) {
         const { x, y, width, height } = positionConfig
 
-        if (!width || !height) {
-            throw new Error('The size must be greater than 0.')
-        }
-
-        super(scene, x, y, width, height)
+        super(scene, x, y, width || 32, height || 32)
 
         this.sliceConfig = buildSliceConfig(sliceConfig)
 
@@ -214,7 +210,6 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
 
         if (width < minWidth || height < minHeight) {
             console.error(`Attempted to set the NineSlice size below the minimum. (${minWidth}x${minHeight})`)
-            return
         }
 
         super.resize(width, height)
