@@ -24,6 +24,8 @@ export default class NineSlice extends Phaser.GameObjects.RenderTexture {
             throw new Error('NineSlice requires a texture key to be specified.')
         }
 
+        this.isSpriteTexture = true
+
         this.sourceTexture = scene.sys.textures.get(sourceKey)
 
         if (!this.sourceTexture || this.sourceTexture.key === MISSING) {
