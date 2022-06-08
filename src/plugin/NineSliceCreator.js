@@ -41,7 +41,7 @@ export default function NineSliceCreator(scene, args) {
 
         sliceConfig.sourceKey = key
 
-        if (typeof frame === 'string' || typeof frame === 'number') {
+        if (typeof frame === 'string') {
             sliceConfig.sourceFrame = frame
         }
     }
